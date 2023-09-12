@@ -5,30 +5,6 @@ import Detail from './components/Detail'
 import Features from './components/Features'
 import Location from './components/Location'
 import Agent from './components/Agent'
-/*
-const App = () => (
-  <>
-    <Header />
-
-    <Property>
-      <Detail />
-      <Features />
-      <Location />
-      <Agent />
-    </Property>
-
-    <Property>
-      <Detail />
-      <Features />
-      <Location />
-      <Agent />
-    </Property>
-
-    ...
-    
-  </>
-)
-*/
 
 export type DataProperty = {
   headerName: string
