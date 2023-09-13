@@ -27,7 +27,7 @@ const Detail: React.FC<DataProperty['detail']> = ({
       </li>
       <li>
         <b>Garage: </b>
-        {garage}
+        {garage} {garage > 1 ? 'cars' : 'car'}
       </li>
     </ul>
   )

@@ -1,23 +1,23 @@
 import './App.css'
-import Header from './components/Header'
-import Property from './components/Property'
+
+import Agent from './components/Agent'
 import Detail from './components/Detail'
 import Features from './components/Features'
+import Header from './components/Header'
 import Location from './components/Location'
-import Agent from './components/Agent'
+import Property from './components/Property'
 
 export type DataProperty = {
   headerName: string
   property: {
     hotelName: string
     img: string
-    alt: string
   }
   detail: {
     price: number
     bedrooms: number
     bathrooms: number
-    garage: string
+    garage: number
   }
   features: Array<{
     feature: string
@@ -33,7 +33,7 @@ export type DataProperty = {
     name: string
     email: string
     phone: string
-    isMember: boolean
+    isPaid: boolean
   }>
 }
 
@@ -43,13 +43,12 @@ const data: Array<DataProperty> = [
     property: {
       hotelName: 'Luxury Villa in Beverly Hills',
       img: 'https://picsum.photos/200?1',
-      alt: 'Luxury Villa in Beverly Hills',
     },
     detail: {
       price: 8500000,
       bedrooms: 5,
       bathrooms: 6,
-      garage: '3 cars',
+      garage: 1,
     },
     features: [
       { feature: 'Swimming pool', isAvailable: true },
@@ -68,7 +67,7 @@ const data: Array<DataProperty> = [
         name: 'John Doe',
         email: 'john.doe@example.com',
         phone: '123-456-7890',
-        isMember: true,
+        isPaid: true,
       },
     ],
   },
@@ -77,13 +76,12 @@ const data: Array<DataProperty> = [
     property: {
       hotelName: 'Modern Apartment in New York',
       img: 'https://picsum.photos/200?2',
-      alt: 'Modern Apartment in New York',
     },
     detail: {
       price: 3000000,
       bedrooms: 3,
       bathrooms: 3,
-      garage: '1 cars',
+      garage: 1,
     },
     features: [
       { feature: 'Open concept layout', isAvailable: false },
@@ -101,7 +99,7 @@ const data: Array<DataProperty> = [
         name: 'seqwe',
         email: 'jdasde.com',
         phone: '122220',
-        isMember: false,
+        isPaid: false,
       },
     ],
   },
@@ -110,13 +108,12 @@ const data: Array<DataProperty> = [
     property: {
       hotelName: 'Cozy Cottage in the Countryside',
       img: 'https://picsum.photos/200?3',
-      alt: 'Cozy Cottage in the Countryside',
     },
     detail: {
       price: 500000,
       bedrooms: 2,
       bathrooms: 2,
-      garage: '2 cars',
+      garage: 2,
     },
     features: [
       { feature: 'Large garden', isAvailable: true },
@@ -137,7 +134,7 @@ const data: Array<DataProperty> = [
         name: 'Bob Johnson',
         email: 'bob.johnson@example.com',
         phone: '555-666-777',
-        isMember: true,
+        isPaid: true,
       },
     ],
   },
@@ -145,17 +142,10 @@ const data: Array<DataProperty> = [
 
 const App = () => (
   <>
-    <header>
-      <Header headerName="🏠 Real Estate Listings" />
-    </header>
+    <Header headerName="🏠 Real Estate Listings" />
     <main>
       {data.map(({ property, detail, features, location, agent }) => (
-        <section className="property">
-          <Property
-            hotelName={property.hotelName}
-            img={property.img}
-            alt={property.hotelName}
-          />
+        <Property hotelName={property.hotelName} img={property.img}>
           <Detail
             price={detail.price}
             bedrooms={detail.bedrooms}
@@ -170,7 +160,7 @@ const App = () => (
             zip={location.zip}
           />
           <Agent agent={agent} />
-        </section>
+        </Property>
       ))}
     </main>
   </>
